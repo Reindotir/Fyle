@@ -14,40 +14,33 @@ void Show::init() {
 void print(const std::shared_ptr<FileNode>& node, int depth = 0) {
     if (!node) return;
 
-    // Отступы для красивого дерева
     for (int i = 0; i < depth; ++i) {
-        std::cout << "  ";
+        std::cout << "   ";
     }
-
-    // Вывод инфы
     std::cout << "|-- " << node->name;
+    if (node->type == "dir") {
+        std::cout << "/";
+    }
     if (node->type == "file") {
         std::cout << " (" << node->size << " bytes)";
     }
     std::cout << "\n";
 
-    // Рекурсия по детям
+    if (node->type != "dir") return;
     for (const auto& child : node->children) {
         print(child, depth + 1);
     }
 }
 
 void Show::run(std::vector<std::string>& args) {
-    auto root = this->ctx.indexData;
-    if (!root) {
+    std::shared_ptr<FileNode> root = this->ctx.indexData;
+    if (!this->ctx.indexData) {
         std::cout << "Данные еще не проиндексированы.\n";
         return;
     }
-
-    try {
-        print(*root);
-    } catch (const std::exception& e) {
-        std::cout << "Ошибка: " << e.what() << "\n";
-    } catch(const std::string& e) {
-        std::cout << "Ошибка: " << e << "\n";
-    } catch (...) {
-        std::cout << "Неизвестная ошибка!" << "\n";
-    }
+    std::cout << "\n";
+    print(root);
+    std::cout << "\n";
 }
 
 void Show::exit() {

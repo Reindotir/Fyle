@@ -44,7 +44,7 @@ void Indexer::run(std::vector<std::string>& args) {
     }
     
     auto root = std::make_shared<FileNode>(File(target));
-    this->ctx.indexData = &root;
+    this->ctx.indexData = root;
     collect(target, root);
 
     std::cout << "Индксация завершена\n";

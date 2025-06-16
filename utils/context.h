@@ -4,6 +4,6 @@
 #include <memory>
 
 struct context {
-    std::shared_ptr<FileNode>* indexData;
+    std::shared_ptr<FileNode> indexData;
     
 };

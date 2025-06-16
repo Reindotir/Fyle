@@ -6,6 +6,7 @@
 
 #include "indexer.h"
 #include "show.h"
+#include "search.h"
 
 std::vector<Module*> initModules() {
     std::vector<Module*> modules;
@@ -14,6 +15,7 @@ std::vector<Module*> initModules() {
 
     modules.push_back(new Indexer(*ctx));
     modules.push_back(new Show(*ctx));
+    modules.push_back(new Search(*ctx));
 
     return modules;
 }

@@ -8,10 +8,17 @@ add_executable(fyle
 
     modules/modules.h
     modules/module.h
+    
+
     modules/indexer.h
     modules/indexer.cpp
+
     modules/show.h
     modules/show.cpp
+
+    modules/search.h
+    modules/search.cpp
+
 
     utils/context.h
     utils/FileNode.h

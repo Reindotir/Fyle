@@ -33,6 +33,7 @@ FileNode File(const fs::path& target) {
     } else if (fs::is_character_file(target)) {
         type = "char";
     }
+    
     FileNode file = { type, target.filename().string(), fs::absolute(target).string() };
     
     if (file.type == "file") {
