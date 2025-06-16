@@ -1,6 +1,9 @@
 #pragma once
 #include "FileNode.h"
+#include <iostream>
+#include <memory>
 
 struct context {
-    FileNode* indexData;
+    std::shared_ptr<FileNode>* indexData;
+    
 };

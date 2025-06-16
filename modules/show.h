@@ -4,10 +4,10 @@
 #include <vector>
 #include "../utils/context.h"
 
-class Indexer : public Module {
+class Show : public Module {
 public:
-    Indexer(context& ctx) : Module(ctx) { 
-        command = "index";
+    Show(context& ctx) : Module(ctx) { 
+        command = "show";
     };
 
     void init() override;

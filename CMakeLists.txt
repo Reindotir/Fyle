@@ -10,6 +10,10 @@ add_executable(fyle
     modules/module.h
     modules/indexer.h
     modules/indexer.cpp
+    modules/show.h
+    modules/show.cpp
 
     utils/context.h
+    utils/FileNode.h
+    utils/FileNode.cpp
 )

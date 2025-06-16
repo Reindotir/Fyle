@@ -5,6 +5,7 @@
 #include "../utils/context.h"
 
 class Module {
+protected:
     context& ctx;
 
 public:
@@ -13,6 +14,7 @@ public:
     virtual void init() {};
     virtual void run(std::vector<std::string>& args) {};
     virtual void exit() {};
+    virtual void help() {};
     virtual ~Module() {}
     Module(context& ctx) : ctx(ctx) {};
 };
