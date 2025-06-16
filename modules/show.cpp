@@ -48,5 +48,8 @@ void Show::exit() {
 }
 
 void Show::help() {
-
+    std::cout << "\n";
+    std::cout << "Что бы посмотреть индексируемые данные, вызовите:\n";
+    std::cout << "  show\n";
+    std::cout << "\n";
 }

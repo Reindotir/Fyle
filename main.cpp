@@ -34,6 +34,8 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
+    std::cout << "Это файловый менеджер с индексацией файлов. (exit - что бы выйти, help - информация о камандах)\n\n";
+
     std::vector<Module*> modules = initModules();
     for (int i = 0; i < modules.size(); ++i) {
         try {
@@ -51,6 +53,16 @@ int main() {
         std::string command;
         std::getline(std::cin, command);
         if (command == "exit") break;
+        if (command == "help") {
+            for (int i = 0; i < modules.size(); ++i) {
+                try {
+                    modules[i]->help();
+                } catch (...) {
+                    std::cout << "Ошибка!" << "\n";
+                }
+            }
+            continue;
+        };
         if (command == "") continue;
 
         std::vector<std::string> args = getArgs(command);

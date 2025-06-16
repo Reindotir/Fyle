@@ -55,6 +55,9 @@ void Indexer::exit() {
 }
 
 void Indexer::help() {
-    
+    std::cout << "\n";
+    std::cout << "Что бы индексировать директорию, вызовите:\n";
+    std::cout << "  index путь_к_папке\n";
+    std::cout << "\n";
 }
 

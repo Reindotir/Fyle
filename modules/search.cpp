@@ -96,5 +96,8 @@ void Search::exit() {
 }
 
 void Search::help() {
-
+    std::cout << "\n";
+    std::cout << "Что бы найти файл, вызовите:\n";
+    std::cout << "  search текст\n";
+    std::cout << "\n";
 }
