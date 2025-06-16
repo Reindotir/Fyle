@@ -4,21 +4,32 @@
 #include <vector>
 #include <regex>
 #include <algorithm>
+#include <cctype>
+#include <sstream>
 
 void Search::init() {
 
 }
 
-std::string normalize(std::string txt) {
-    std::string result;
-    for (char c : txt) {
-        if (std::isalnum(c)) {
-            result += std::tolower(c);
-        } else if (c == ' ' || c == '-' || c == '_' || c == '.') {
-            result += ' ';
+std::string normalize(const std::string& input) {
+    std::string cleaned;
+
+    for (char ch : input) {
+        if (ch == '<' || ch == '>' || ch == ':' || ch == '"' ||
+            ch == '/' || ch == '\\' || ch == '|' || ch == '?' || ch == '*') {
+            cleaned += ' ';
+        } else {
+            cleaned += std::tolower(static_cast<unsigned char>(ch));
         }
     }
-    std::cout << "Нормалищация: " << txt << " в " << result << "\n";
+    
+    std::istringstream iss(cleaned);
+    std::string word, result;
+    while (iss >> word) {
+        if (!result.empty()) result += ' ';
+        result += word;
+    }
+
     return result;
 }
 
@@ -28,12 +39,7 @@ std::vector<std::string> tokenize(const std::string& text) {
     std::sregex_token_iterator end;
 
     std::vector<std::string> tokens(it, end);
-    std::cout << "Токенизация:\n";
     
-    for (const std::string& word : tokens) {
-        std::cout << word << " ";
-    }
-    std::cout << "\n";
     return tokens;
 }
 
@@ -47,16 +53,14 @@ int matches(std::string file_name, std::vector<std::string> query) {
             ++match;
         }
     }
-    std::cout << "Резльтат: " << match << "\n";
+    
     return match;
 }
 
 void search(const std::vector<std::string>& tokens, const std::shared_ptr<FileNode>& node) {
     for (const auto& child : node->children) {
         std::string name = child->name;
-
-        std::cout << "\n" << "Имя файла: " << name << "\n";
-
+        
         int res = matches(name, tokens);
         if (res) {
             std::cout << res << " " << "| " << child->path << "\n";
@@ -84,10 +88,8 @@ void Search::run(std::vector<std::string>& args) {
     text = normalize(text);
     std::vector<std::string> tokens = tokenize(text);
 
-    std::cout << "Поиск:\n";
-
+    std::cout << "Поиск:\n\n";
     search(tokens, root);
-
     std::cout << "Поиск завершен\n\n";
 }
 
