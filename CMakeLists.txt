@@ -8,7 +8,7 @@ add_executable(fyle
 
     modules/modules.h
     modules/module.h
-    
+
 
     modules/indexer.h
     modules/indexer.cpp
@@ -18,6 +18,12 @@ add_executable(fyle
 
     modules/search.h
     modules/search.cpp
+
+    modules/export.h
+    modules/export.cpp
+
+    modules/import.h
+    modules/import.cpp
 
 
     utils/context.h
