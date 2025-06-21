@@ -1,0 +1,21 @@
+{
+    "default-registry": {
+        "kind": "git",
+        "repository": "https://github.com/microsoft/vcpkg",
+        "baseline": "4fc5d0252289d5dc22a422beff86344a6cb52414"
+    },
+    "registries": [
+        {
+        "kind": "artifact",
+        "location": "https://github.com/microsoft/vcpkg-ce-catalog/archive/refs/heads/main.zip",
+        "name": "microsoft"
+        }
+    ],
+    "features": {
+        "versions": true,
+        "registries": true,
+        "binarycaching": true,
+        "manifests": true,
+        "boost-cmake": true
+    }
+}

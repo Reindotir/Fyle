@@ -21,3 +21,4 @@ build
 #cmake-build-*
 
 .vscode
+.vs

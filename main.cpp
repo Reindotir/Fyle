@@ -34,7 +34,7 @@ int main() {
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
-    std::cout << "Это файловый менеджер с индексацией файлов. (exit - что бы выйти, help - информация о камандах)\n\n";
+    std::cout << "Это файловый менеджер с индексацией файлов. (exit - что бы выйти, help - информация о командах)\n\n";
 
     std::vector<Module*> modules = initModules();
     for (int i = 0; i < modules.size(); ++i) {
